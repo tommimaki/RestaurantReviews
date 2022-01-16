@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add review</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Add Review</h1>
+	<div>
+
+		<form th:object="${review}" th:action="@{save}" action="#" method="post">
+		  
+		  	<label for="restaurantName">Restaurant name </label>
+		  	<input type="text" id="restaurantName" th:field="*{restaurantName}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+		  	<label for="type">Restaurant type </label>
+		  	<input type="text" id="restaurantType" th:field="*{restaurantType}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			
+		  	<label for="reviewer">Reviewer</label>
+			<input type="text" id="reviewer" th:field="*{reviewer}" />
+			<div style="clear: both; display: block; height: 10px;"></div>		
+				
+		  	<label for="note">Dish</label>
+			<input type="text" id="reviewer" th:field="*{note}" />
+			<div style="clear: both; display: block; height: 10px;"></div>	
+					
+		  	<label for="value">Value for money</label>
+			<input type="text" id="value" th:field="*{value}" />
+			<div style="clear: both; display: block; height: 10px;"></div>			
+			
+		  	<label for="grade">Grading out of 5</label>
+			<input type="text" id="grade" th:field="*{grade}" />
+			<div style="clear: both; display: block; height: 10px;"></div>			
+			
+			
+						
+		 
+			
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="submit" value="Save"></input>
+		</form>
+	</div>
+</body>
+</html>

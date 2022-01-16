@@ -12,35 +12,36 @@ public class Review {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long reviewid;
-	private String reviewer, note, value;
+	private long id;
+	private String restaurantName, restaurantType, reviewer, note, value;
 	private int grade;
 
-	@ManyToOne
-	@JoinColumn(name = "restaurantName")
-	private Restaurant restaurant;
-
+	
+	
 	//constructors
 	public Review() {
 	}
 
-	public Review(String type, String reviewer, String note, String value, int grade, Restaurant restaurant) {
+	public Review(String restaurantName, String restaurantType, String reviewer, String note, String value, int grade) {
 		super();
+		this.setRestaurantName(restaurantName);
+		this.setRestaurantType(restaurantType);
 		this.reviewer = reviewer;
 		this.note = note;
 		this.grade = grade;
 		this.value = value;
-		this.restaurant = restaurant;
+		
 	}
 
 	// reviewGetsets
 
+
 	public long getId() {
-		return reviewid;
+		return id;
 	}
 
 	public void setId(long reviewid) {
-		this.reviewid = reviewid;
+		this.id = reviewid;
 	}
 
 	public String getReviewer() {
@@ -75,14 +76,20 @@ public class Review {
 		this.value = value;
 	}
 
-	// restaurant getsets
-
-	public Restaurant getRestaurant() {
-		return restaurant;
+	public String getRestaurantName() {
+		return restaurantName;
 	}
 
-	public void setRestaurant(Restaurant restaurant) {
-		this.restaurant = restaurant;
+	public void setRestaurantName(String restaurantName) {
+		this.restaurantName = restaurantName;
+	}
+
+	public String getRestaurantType() {
+		return restaurantType;
+	}
+
+	public void setRestaurantType(String restaurantType) {
+		this.restaurantType = restaurantType;
 	}
 
 }

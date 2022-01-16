@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+<head>
+<title>Restaurant reviews</title>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+</head>
+<body>
+	<h1>Restaurant Reviews</h1>
+	<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+	
+	<td sec:authorize="isAnonymous()"><a class="btn btn-info" th:href="@{/login}">Login</a></td>
+			<td><a class="btn btn-info" th:href="@{/logout}">Logout</a></td>
+
+		
+
+
+	<table class="table table-striped">
+	<thead>
+		<tr>
+		<th> Restaurant </th>
+		<th> Restaurant type </th>
+		<th> Reviewer </th>
+		<th> Dish </th>
+		<th> Value for money </th>
+		<th> Grading </th>
+		</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="review : ${reviews}">
+				<td th:text="${review.restaurantName}"></td>
+				<td th:text="${review.restaurantType}"></td>
+				<td th:text="${review.reviewer}"></td>
+				<td th:text="${review.note}"></td>
+				<td th:text="${review.value}"></td>
+				<td th:text="${review.grade}"></td>
+				<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{/delete/{id}(id=${review.id})}">Delete</a></td>
+			</tr>
+
+
+		</tbody>
+	</table>
+
+ <td> <a class="btn btn-success" href="/addreview">Add Review</a></td>
+ 
+</body>
+
+</html>
